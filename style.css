@@ -187,22 +187,18 @@ body{
   background:#ff7a18;
 }
 
-/* Redes Sociais */
-
 .socials{
   display:flex;
   justify-content:center;
-  align-items:center;
   flex-wrap:wrap;
   gap:16px;
-
   margin-top:50px;
 }
 
 .social{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 
   padding:14px 22px;
 
@@ -210,54 +206,45 @@ body{
   color:#fff;
 
   background:rgba(0,0,0,.35);
-
   border:1px solid rgba(255,255,255,.15);
-  border-radius:14px;
+  border-radius:16px;
 
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
 
-  transition:.3s;
+  transition:.3s ease;
 }
 
-.social i{
-  font-size:22px;
+.social svg{
+  width:24px;
+  height:24px;
+  flex-shrink:0;
 }
 
 .social:hover{
   transform:translateY(-4px) scale(1.05);
 }
 
-/* Cores */
-
 .youtube:hover{
+  color:#ff0000;
   border-color:#ff0000;
   box-shadow:0 0 25px rgba(255,0,0,.6);
 }
 
 .twitter:hover{
-  border-color:#ffffff;
-  box-shadow:0 0 25px rgba(255,255,255,.4);
+  color:#fff;
+  border-color:#fff;
+  box-shadow:0 0 25px rgba(255,255,255,.5);
 }
 
 .instagram:hover{
+  color:#ff2ea6;
   border-color:#ff2ea6;
   box-shadow:0 0 25px rgba(255,46,166,.6);
 }
 
 .tiktok:hover{
+  color:#22d3ee;
   border-color:#22d3ee;
   box-shadow:0 0 25px rgba(34,211,238,.6);
-}
-
-@media (max-width:768px){
-  .socials{
-    gap:12px;
-  }
-
-  .social{
-    width:100%;
-    max-width:260px;
-    justify-content:center;
-  }
 }
