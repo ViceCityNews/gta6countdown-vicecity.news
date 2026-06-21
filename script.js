@@ -9,21 +9,18 @@ const elements = {
     seconds: document.getElementById("seconds")
 };
 
-const pad = value => String(value).padStart(2, "0");
+const pad = (value) => String(value).padStart(2, "0");
 
 function updateCountdown() {
-
     const difference = targetDate.getTime() - Date.now();
 
     if (difference <= 0) {
-
         timer.innerHTML = `
             <div class="launch">
                 <h2>🚀 NOW AVAILABLE</h2>
                 <p>GTA VI has officially launched.</p>
             </div>
         `;
-
         return;
     }
 
@@ -42,11 +39,11 @@ function updateCountdown() {
 
 updateCountdown();
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J2VHEDGXZD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+// Google Analytics
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
 
-  gtag('config', 'G-J2VHEDGXZD');
-</script>
+gtag("js", new Date());
+gtag("config", "G-J2VHEDGXZD");
