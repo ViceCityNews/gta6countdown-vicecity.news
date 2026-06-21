@@ -49,5 +49,5 @@ updateCountdown();
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-SEU_ID');
+  gtag('config', 'G-J2VHEDGXZD');
 </script>
