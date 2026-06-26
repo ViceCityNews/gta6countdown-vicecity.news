@@ -13,24 +13,32 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run script
         run: node update.js
 
-      - name: Commit changes
+      - name: Commit and Push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "SEU_USUARIO"
+          git config user.email "SEU_EMAIL_VERIFICADO"
 
           git add README.md contador.json
 
-          git diff --staged --quiet || (
+          if ! git diff --cached --quiet; then
             git commit -m "daily update"
-            git push
-          )
+            git push origin HEAD
+          else
+            echo "Nenhuma alteração."
+          fi
