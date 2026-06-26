@@ -1,16 +1,28 @@
 const fs = require("fs");
 
-const data = JSON.parse(fs.readFileSync("contador.json", "utf-8"));
+const targetDate = new Date("2026-11-19T12:00:00-05:00");
+const now = new Date();
 
-if (data.days > 0) {
-  data.days -= 1;
+let diff = targetDate - now;
 
-  fs.writeFileSync("contador.json", JSON.stringify(data, null, 2));
+if (diff < 0) diff = 0;
 
-  const readme = `# Countdown
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+const minutes = Math.floor(diff / (1000 * 60)) % 60;
 
-${data.days} days
+const contador = {
+  target: targetDate.toISOString(),
+  days,
+  hours,
+  minutes,
+};
+
+fs.writeFileSync("contador.json", JSON.stringify(contador, null, 2));
+
+const readme = `# Countdown
+
+${days} days ${hours} hours ${minutes} minutes
 `;
 
-  fs.writeFileSync("README.md", readme);
-}
+fs.writeFileSync("README.md", readme);
