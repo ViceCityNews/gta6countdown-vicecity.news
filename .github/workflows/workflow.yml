@@ -2,7 +2,7 @@ name: Daily Countdown
 
 on:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "* * * * *"
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -31,14 +31,14 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git config user.name "user"
-          git config user.email "mail"
+          git config user.name "SEU_USUARIO"
+          git config user.email "SEU_EMAIL_VERIFICADO"
 
           git add README.md contador.json
 
-          if ! git diff --cached --quiet; then
-            git commit -m "daily update"
-            git push origin HEAD
-          else
+          if git diff --cached --quiet; then
             echo "Nenhuma alteração."
+          else
+            git commit -m "daily update"
+            git push
           fi
